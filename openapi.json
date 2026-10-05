@@ -1,0 +1,149 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API do Sistema de Correção de Provas",
+    "version": "0.1.0",
+    "description": "Rotas iniciais com dados estáticos para integração e demonstração."
+  },
+  "servers": [{ "url": "http://localhost:8000" }],
+  "paths": {
+    "/api/escolas/{resource_id}/turmas": {
+      "get": {
+        "summary": "Lista as turmas de uma escola",
+        "parameters": [{ "$ref": "#/components/parameters/ResourceId" }],
+        "responses": {
+          "200": { "$ref": "#/components/responses/Turmas" },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/api/escolas/{resource_id}/materias": {
+      "get": {
+        "summary": "Lista as matérias de uma escola",
+        "parameters": [{ "$ref": "#/components/parameters/ResourceId" }],
+        "responses": {
+          "200": { "$ref": "#/components/responses/Materias" },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/api/professores/{resource_id}/vinculos": {
+      "get": {
+        "summary": "Lista os vínculos entre turmas e matérias de um professor",
+        "parameters": [{ "$ref": "#/components/parameters/ResourceId" }],
+        "responses": {
+          "200": { "$ref": "#/components/responses/Vinculos" },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/api/professores/{resource_id}/gabaritos": {
+      "get": {
+        "summary": "Lista os gabaritos de um professor",
+        "parameters": [{ "$ref": "#/components/parameters/ResourceId" }],
+        "responses": {
+          "200": { "$ref": "#/components/responses/Gabaritos" },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    },
+    "/api/professores/{resource_id}/resultados": {
+      "get": {
+        "summary": "Lista os resultados de um professor",
+        "parameters": [{ "$ref": "#/components/parameters/ResourceId" }],
+        "responses": {
+          "200": { "$ref": "#/components/responses/Resultados" },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "500": { "$ref": "#/components/responses/InternalError" }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "ResourceId": {
+        "name": "resource_id",
+        "in": "path",
+        "required": true,
+        "description": "ID positivo da escola ou do professor.",
+        "schema": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": ["code", "message"],
+            "properties": {
+              "code": { "type": "integer", "example": 400 },
+              "message": { "type": "string", "example": "O identificador deve ser um número inteiro positivo." },
+              "details": { "type": "object", "additionalProperties": true }
+            }
+          }
+        }
+      },
+      "Turma": {
+        "type": "object", "required": ["id", "nome"],
+        "properties": { "id": { "type": "integer" }, "nome": { "type": "string" } }
+      },
+      "Materia": {
+        "type": "object", "required": ["id", "nome"],
+        "properties": { "id": { "type": "integer" }, "nome": { "type": "string" } }
+      },
+      "Vinculo": {
+        "type": "object", "required": ["id", "turma", "materia"],
+        "properties": {
+          "id": { "type": "integer" },
+          "turma": { "$ref": "#/components/schemas/Turma" },
+          "materia": { "$ref": "#/components/schemas/Materia" }
+        }
+      },
+      "Gabarito": {
+        "type": "object", "required": ["id", "nome", "turma_id", "turma", "materia", "quantidade_questoes", "codigo_qr"],
+        "properties": {
+          "id": { "type": "integer" }, "nome": { "type": "string" },
+          "turma_id": { "type": "integer" }, "turma": { "type": "string" },
+          "materia": { "type": "string" }, "quantidade_questoes": { "type": "integer" },
+          "codigo_qr": { "type": "string" }
+        }
+      },
+      "Resultado": {
+        "type": "object", "required": ["id", "aluno", "turma", "materia", "avaliacao", "quantidade_acertos", "quantidade_questoes", "nota", "data_resultado"],
+        "properties": {
+          "id": { "type": "integer" }, "aluno": { "type": "string" },
+          "turma": { "type": "string" }, "materia": { "type": "string" },
+          "avaliacao": { "type": "string" }, "quantidade_acertos": { "type": "integer" },
+          "quantidade_questoes": { "type": "integer" }, "nota": { "type": "number" },
+          "data_resultado": { "type": "string", "format": "date" }
+        }
+      },
+      "TurmasResponse": { "type": "object", "required": ["data"], "properties": { "data": { "type": "array", "items": { "$ref": "#/components/schemas/Turma" } } } },
+      "MateriasResponse": { "type": "object", "required": ["data"], "properties": { "data": { "type": "array", "items": { "$ref": "#/components/schemas/Materia" } } } },
+      "VinculosResponse": { "type": "object", "required": ["data"], "properties": { "data": { "type": "array", "items": { "$ref": "#/components/schemas/Vinculo" } } } },
+      "GabaritosResponse": { "type": "object", "required": ["data"], "properties": { "data": { "type": "array", "items": { "$ref": "#/components/schemas/Gabarito" } } } },
+      "ResultadosResponse": { "type": "object", "required": ["data"], "properties": { "data": { "type": "array", "items": { "$ref": "#/components/schemas/Resultado" } } } }
+    },
+    "responses": {
+      "BadRequest": { "description": "Identificador inválido", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "NotFound": { "description": "Recurso ou rota não encontrado", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "InternalError": { "description": "Erro interno", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "Turmas": { "description": "Lista de turmas", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TurmasResponse" } } } },
+      "Materias": { "description": "Lista de matérias", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/MateriasResponse" } } } },
+      "Vinculos": { "description": "Lista de vínculos", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/VinculosResponse" } } } },
+      "Gabaritos": { "description": "Lista de gabaritos", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/GabaritosResponse" } } } },
+      "Resultados": { "description": "Lista de resultados", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ResultadosResponse" } } } }
+    }
+  }
+}

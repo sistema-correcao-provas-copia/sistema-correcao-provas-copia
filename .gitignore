@@ -1,0 +1,22 @@
+# Ambiente virtual
+.venv/
+venv/
+
+# Variáveis de ambiente
+.env
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Arquivos temporários
+folha_temp.jpg
+qr_temp.png
+debug_alinhameto.jpg
+
+# Arquivos gerados
+folha_respostas.pdf
+
+# VS Code
+.vscode/

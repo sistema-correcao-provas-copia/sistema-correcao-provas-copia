@@ -8,7 +8,7 @@ def _configurar_env():
     try:
         import streamlit as st
 
-        for chave in ("DB_HOST", "DB_NAME", "DB_USER", "DB_PASSWORD", "DB_PORT"):
+        for chave in ("DATABASE_URL", "DB_HOST", "DB_NAME", "DB_USER", "DB_PASSWORD", "DB_PORT"):
             if chave not in os.environ and chave in st.secrets:
                 os.environ[chave] = str(st.secrets[chave])
     except Exception:
@@ -18,6 +18,10 @@ def _configurar_env():
 
 def conectar():
     _configurar_env()
+    database_url = os.getenv("DATABASE_URL")
+    if database_url:
+        return psycopg2.connect(database_url, client_encoding="UTF8")
+
     conexao = psycopg2.connect(
         host=os.getenv("DB_HOST", os.getenv("POSTGRES_HOST", "localhost")),
         database=os.getenv("DB_NAME", os.getenv("POSTGRES_DB", "sistema_correcao_provas")),

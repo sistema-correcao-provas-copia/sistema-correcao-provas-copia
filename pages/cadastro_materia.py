@@ -15,7 +15,7 @@ if not st.session_state.get("logado", False):
     st.stop()
 
 
-st.title("📚 Cadastro de Matéria")
+st.title(" Cadastro de Matéria")
 
 st.write("Cadastre uma matéria da sua escola.")
 

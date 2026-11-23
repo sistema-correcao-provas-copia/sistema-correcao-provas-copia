@@ -7,14 +7,14 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("🏫 Cadastro da Escola")
+st.title(" Cadastro da Escola")
 st.write("Preencha os dados da escola e do responsável.")
 
 # =========================
 # DADOS DA ESCOLA
 # =========================
 
-st.header("🏫 Dados da Escola")
+st.header(" Dados da Escola")
 
 nome_escola = st.text_input("Nome da escola *")
 

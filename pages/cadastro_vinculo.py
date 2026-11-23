@@ -20,7 +20,7 @@ if not st.session_state.get("logado", False):
     st.stop()
 
 
-st.title("🔗 Vincular Professor")
+st.title(" Vincular Professor")
 
 st.write(
     "Defina qual professor leciona determinada matéria em uma turma."
@@ -41,7 +41,7 @@ if professores:
     }
 
     professor_escolhido = st.selectbox(
-        "👨‍🏫 Professor *",
+        " Professor *",
         opcoes_professores.keys()
     )
 
@@ -64,7 +64,7 @@ if turmas:
     }
 
     turma_escolhida = st.selectbox(
-        "🏫 Turma *",
+        " Turma *",
         opcoes_turmas.keys()
     )
 
@@ -87,7 +87,7 @@ if materias:
     }
 
     materia_escolhida = st.selectbox(
-        "📚 Matéria *",
+        " Matéria *",
         opcoes_materias.keys()
     )
 

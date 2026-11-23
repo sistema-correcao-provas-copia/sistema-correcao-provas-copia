@@ -7,7 +7,7 @@ st.set_page_config(
     page_icon="🏫"
 )
 
-st.title("🏫 Área da Escola")
+st.title(" Área da Escola")
 st.write("Entre com os dados da sua escola.")
 
 email = st.text_input("E-mail")

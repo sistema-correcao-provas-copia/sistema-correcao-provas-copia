@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 
-st.title("👨‍🏫 Área do Professor")
+st.title(" Área do Professor")
 
 st.write("Entre com seus dados para acessar o sistema.")
 

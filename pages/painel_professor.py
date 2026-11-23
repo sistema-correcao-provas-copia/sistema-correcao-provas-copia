@@ -16,7 +16,7 @@ if not st.session_state.get("professor_logado", False):
     st.stop()
 
 
-st.title("👨‍🏫 Painel do Professor")
+st.title(" Painel do Professor")
 
 st.write(
     "Bem-vindo,",
@@ -36,14 +36,14 @@ col1, col2 = st.columns(2)
 with col1:
 
     if st.button(
-        "📝 Meus Gabaritos",
+        " Meus Gabaritos",
         use_container_width=True
     ):
         st.switch_page("pages/cadastro_gabarito.py")
 
 
     if st.button(
-        "📊 Meus Resultados",
+        " Meus Resultados",
         use_container_width=True
     ):
         st.info("Área de resultados será criada aqui.")
@@ -52,7 +52,7 @@ with col1:
 with col2:
 
     if st.button(
-        "👥 Minhas Turmas",
+        " Minhas Turmas",
         use_container_width=True
     ):
         professor_id = st.session_state["professor_id"]
@@ -67,7 +67,7 @@ with col2:
             )
 
         else:
-            st.subheader("👥 Minhas Turmas")
+            st.subheader(" Minhas Turmas")
 
             for resultado in resultados:
 
@@ -77,7 +77,7 @@ with col2:
                 materia_nome = resultado[3]
 
                 st.write(
-                    f"🏫 **{turma_nome}** — 📚 {materia_nome}"
+                    f" **{turma_nome}** — 📚 {materia_nome}"
                 )
 
 
@@ -85,7 +85,7 @@ st.divider()
 
 
 if st.button(
-    "🚪 Sair",
+    " Sair",
     use_container_width=True
 ):
 

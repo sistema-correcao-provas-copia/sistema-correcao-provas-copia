@@ -24,7 +24,7 @@ if escola_id is None:
     st.stop()
 
 
-st.title("📊 Resultados da Escola")
+st.title(" Resultados da Escola")
 
 st.write(
     "Visualize os resultados das avaliações realizadas pelos alunos da escola."
@@ -59,7 +59,7 @@ df = pd.DataFrame(resultados, columns=colunas)
 
 
 # Filtros
-st.subheader("🔎 Filtrar resultados")
+st.subheader(" Filtrar resultados")
 
 col1, col2, col3 = st.columns(3)
 
@@ -122,7 +122,7 @@ st.divider()
 
 
 # Resumo
-st.subheader("📈 Resumo dos resultados")
+st.subheader(" Resumo dos resultados")
 
 quantidade_resultados = len(df_filtrado)
 
@@ -164,7 +164,7 @@ st.divider()
 
 
 # Tabela
-st.subheader("📋 Resultados dos alunos")
+st.subheader(" Resultados dos alunos")
 
 if df_filtrado.empty:
     st.info("Nenhum resultado encontrado com os filtros selecionados.")
@@ -203,5 +203,5 @@ else:
 st.divider()
 
 
-if st.button("⬅️ Voltar ao painel da escola"):
+if st.button(" Voltar ao painel da escola"):
     st.switch_page("pages/painel_escola.py")

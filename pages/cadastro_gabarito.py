@@ -27,7 +27,7 @@ if not st.session_state.get("professor_logado", False):
     st.stop()
 
 
-st.title("📝 Criar Gabarito")
+st.title(" Criar Gabarito")
 
 st.write(
     "Cadastre o gabarito de uma avaliação."
@@ -104,7 +104,7 @@ quantidade_questoes = st.number_input(
 
 st.divider()
 
-st.subheader("📝 Gabarito das questões")
+st.subheader(" Gabarito das questões")
 
 for numero in range(1, quantidade_questoes + 1):
 
@@ -214,7 +214,7 @@ if st.button(
 
             qr.save(buffer, format="PNG")
 
-            st.subheader("🔲 QR Code da avaliação")
+            st.subheader(" QR Code da avaliação")
 
             st.image(
                 buffer.getvalue(),

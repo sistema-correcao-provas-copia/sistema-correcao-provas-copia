@@ -36,7 +36,7 @@ if not st.session_state.get("professor_logado", False):
 # TÍTULO
 # ============================================================
 
-st.title("📝 Corrigir Prova")
+st.title(" Corrigir Prova")
 
 st.write(
     "Selecione uma avaliação e depois escolha o aluno que será corrigido."
@@ -70,7 +70,7 @@ if not gabaritos:
 # SELECIONAR AVALIAÇÃO
 # ============================================================
 
-st.subheader("📚 Selecione a avaliação")
+st.subheader(" Selecione a avaliação")
 
 
 opcoes = {}
@@ -127,7 +127,7 @@ questoes_gabarito = listar_questoes_por_gabarito(
 
 st.session_state["questoes_gabarito"] = questoes_gabarito
 
-with st.expander("🔍 Visualizar gabarito carregado"):
+with st.expander(" Visualizar gabarito carregado"):
 
     if questoes_gabarito:
 
@@ -152,7 +152,7 @@ st.divider()
 # INFORMAÇÕES DA AVALIAÇÃO
 # ============================================================
 
-st.subheader("📋 Informações da avaliação")
+st.subheader(" Informações da avaliação")
 
 st.write(
     f"**Avaliação:** {dados_avaliacao['nome']}"
@@ -178,7 +178,7 @@ st.divider()
 # LISTAR ALUNOS DA TURMA
 # ============================================================
 
-st.subheader("👨‍🎓 Alunos da turma")
+st.subheader(" Alunos da turma")
 
 
 turma_id = dados_avaliacao["turma_id"]
@@ -204,7 +204,7 @@ else:
         matricula = aluno[2]
 
         if st.button(
-            f"👤 {nome_aluno} — Matrícula: {matricula or 'Não informada'}",
+            f" {nome_aluno} — Matrícula: {matricula or 'Não informada'}",
             use_container_width=True,
             key=f"aluno_{aluno_id}"
         ):
@@ -225,13 +225,13 @@ if "aluno_id" in st.session_state:
 
     st.divider()
 
-    st.subheader("👤 Aluno selecionado")
+    st.subheader(" Aluno selecionado")
 
     st.write(
         f"**Nome:** {st.session_state['nome_aluno']}"
     )
 
-    st.subheader("📷 Fotografar folha de respostas")
+    st.subheader(" Fotografar folha de respostas")
 
     foto = st.camera_input(
         "Tire uma foto da folha de respostas",
@@ -246,11 +246,11 @@ if "aluno_id" in st.session_state:
         )
 
         st.success(
-            "📸 Foto capturada com sucesso!"
+            " Foto capturada com sucesso!"
         )
 
         st.write(
-            f"📐 Resolução da foto: "
+            f" Resolução da foto: "
             f"{imagem.width} × {imagem.height} pixels"
         )
 
@@ -268,7 +268,7 @@ if "aluno_id" in st.session_state:
 
         st.divider()
 
-        st.subheader("🤖 Leitura automática")
+        st.subheader(" Leitura automática")
 
         st.write(
             "O sistema irá identificar automaticamente "
@@ -276,7 +276,7 @@ if "aluno_id" in st.session_state:
         )
 
         if st.button(
-            "🔍 Ler folha e corrigir",
+            " Ler folha e corrigir",
             type="primary",
             use_container_width=True
         ):
@@ -319,11 +319,11 @@ if "aluno_id" in st.session_state:
                 # ------------------------------------------------
 
                 st.success(
-                    "✅ Folha lida com sucesso!"
+                    " Folha lida com sucesso!"
                 )
 
                 st.subheader(
-                    "🔎 Respostas detectadas"
+                    " Respostas detectadas"
                 )
 
                 for numero in range(
@@ -436,7 +436,7 @@ if "aluno_id" in st.session_state:
 
 
                 st.success(
-                    "🎉 Prova corrigida e resultado "
+                    " Prova corrigida e resultado "
                     "salvo com sucesso!"
                 )
 
@@ -444,7 +444,7 @@ if "aluno_id" in st.session_state:
             except Exception as erro:
 
                 st.error(
-                    f"❌ Erro ao ler a folha: {erro}"
+                    f" Erro ao ler a folha: {erro}"
                 )
 
                 
@@ -452,7 +452,7 @@ if "nota" in st.session_state:
 
     st.divider()
 
-    st.subheader("📊 Resultado da correção")
+    st.subheader(" Resultado da correção")
 
     acertos = st.session_state["acertos"]
     total = st.session_state["total_questoes"]

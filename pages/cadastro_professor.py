@@ -22,7 +22,7 @@ if not st.session_state.get("logado", False):
 # TÍTULO
 # =========================
 
-st.title("👨‍🏫 Cadastro de Professor")
+st.title(" Cadastro de Professor")
 
 st.write(
     "Cadastre um professor da sua escola."

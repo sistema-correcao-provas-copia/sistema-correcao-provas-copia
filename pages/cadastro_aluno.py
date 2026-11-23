@@ -28,7 +28,7 @@ if not st.session_state.get("logado", False):
 # TÍTULO
 # =========================
 
-st.title("👨‍🎓 Cadastro de Aluno")
+st.title(" Cadastro de Aluno")
 
 st.write("Cadastre um aluno da sua escola.")
 
@@ -43,8 +43,8 @@ st.subheader("Como deseja cadastrar os alunos?")
 opcao = st.radio(
     "Escolha uma opção:",
     [
-        "➕ Cadastrar aluno individualmente",
-        "📊 Importar alunos por Excel"
+        " Cadastrar aluno individualmente",
+        "➕ Importar alunos por Excel"
     ],
     key="opcao_cadastro_aluno"
 )
@@ -122,7 +122,7 @@ if opcao == "➕ Cadastrar aluno individualmente":
                 if "aluno_escola_matricula_unique" in str(erro):
 
                     st.warning(
-                        "⚠️ Já existe um aluno com essa matrícula nesta escola."
+                        " Já existe um aluno com essa matrícula nesta escola."
                     )
 
                 else:
@@ -167,7 +167,7 @@ else:
     # Botão para baixar o modelo
 
     st.download_button(
-        label="📥 Baixar modelo Excel",
+        label=" Baixar modelo Excel",
         data=memoria,
         file_name="modelo_alunos.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -178,7 +178,7 @@ else:
 
     # Enviar Excel preenchido
     arquivo_enviado = st.file_uploader(
-        "📤 Envie o arquivo Excel preenchido",
+        " Envie o arquivo Excel preenchido",
         type=["xlsx"]
     )
 
@@ -278,7 +278,7 @@ else:
                     for matricula in matriculas:
 
                         st.write(
-                            f"❌ {matricula}"
+                            f" {matricula}"
                         )
 
 
@@ -321,7 +321,7 @@ else:
                     for matricula in matriculas_existentes:
 
                         st.write(
-                            f"❌ {matricula}"
+                            f" {matricula}"
                         )
 
 
@@ -374,7 +374,7 @@ else:
                         for turma in turmas_invalidas:
 
                             st.write(
-                                f"❌ {turma}"
+                                f" {turma}"
                             )
 
                     else:
@@ -393,7 +393,7 @@ else:
                         )
 
                         if st.button(
-                            "✅ CADASTRAR ALUNOS",
+                            " CADASTRAR ALUNOS",
                             use_container_width=True
                         ):
                             alunos_para_cadastrar = []

@@ -30,15 +30,15 @@ st.write(
 st.divider()
 
 # Informativos
-st.subheader("📢 Informativos")
+st.subheader(" Informativos")
 
-st.info("📝 Crie provas e cadastre seus respectivos gabaritos.")
+st.info(" Crie provas e cadastre seus respectivos gabaritos.")
 
-st.info("📱 Utilize QR Codes para identificar as folhas de respostas.")
+st.info(" Utilize QR Codes para identificar as folhas de respostas.")
 
-st.info("⚡ Faça a correção das provas de forma rápida e organizada.")
+st.info(" Faça a correção das provas de forma rápida e organizada.")
 
-st.info("📊 Acompanhe os resultados e o desempenho dos alunos.")
+st.info(" Acompanhe os resultados e o desempenho dos alunos.")
 
 st.divider()
 
@@ -49,13 +49,13 @@ col1, col2 = st.columns(2)
 
 with col1:
     escola = st.button(
-        "🏫 Área da Escola",
+        " Área da Escola",
         use_container_width=True
     )
 
 with col2:
     professor = st.button(
-        "👨‍🏫 Área do Professor",
+        " Área do Professor",
         use_container_width=True
     )
 

@@ -19,7 +19,7 @@ if not st.session_state.get("professor_logado", False):
     st.stop()
 
 
-st.title("📝 Folha de Respostas")
+st.title(" Folha de Respostas")
 
 st.write(
     "Aqui será gerada a folha de respostas da avaliação."
@@ -78,12 +78,12 @@ dados_gabarito = opcoes[
 st.divider()
 
 st.write(
-    "📋 **Avaliação:**",
+    " **Avaliação:**",
     gabarito_escolhido
 )
 
 st.write(
-    "🔢 **Quantidade de questões:**",
+    " **Quantidade de questões:**",
     dados_gabarito["quantidade"]
 )
 
@@ -95,7 +95,7 @@ qr = qrcode.make(codigo_qr)
 buffer = BytesIO()
 qr.save(buffer, format="PNG")
 
-st.subheader("🔲 QR Code da avaliação")
+st.subheader(" QR Code da avaliação")
 
 st.image(
     buffer.getvalue(),
@@ -105,7 +105,7 @@ st.image(
 st.divider()
 
 if st.button(
-    "📄 GERAR FOLHA DE RESPOSTAS",
+    " GERAR FOLHA DE RESPOSTAS",
     use_container_width=True
 ):
     st.divider()
@@ -126,7 +126,7 @@ if st.button(
         pdf_bytes = arquivo.read()
 
     st.download_button(
-        label="⬇️ BAIXAR PDF",
+        label=" BAIXAR PDF",
         data=pdf_bytes,
         file_name="folha_respostas.pdf",
         mime="application/pdf",
@@ -145,7 +145,7 @@ if st.button(
         f"**Quantidade de questões:** {dados_gabarito['quantidade']}"
         )
 
-    st.subheader("🔲 QR Code")
+    st.subheader(" QR Code")
 
     st.image(
         buffer.getvalue(),
@@ -153,7 +153,7 @@ if st.button(
     )
     st.divider()
 
-    st.subheader("📝 Questões")
+    st.subheader(" Questões")
 
     for numero in range(1, dados_gabarito["quantidade"] + 1):
         col1, col2, col3, col4, col5, col6 = st.columns(6)

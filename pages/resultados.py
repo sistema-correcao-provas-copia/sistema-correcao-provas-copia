@@ -26,7 +26,7 @@ if not st.session_state.get("professor_logado", False):
 # TÍTULO
 # ============================================================
 
-st.title("📊 Resultados das Correções")
+st.title(" Resultados das Correções")
 
 st.write(
     "Consulte e filtre as notas dos alunos das avaliações vinculadas ao seu usuário."
@@ -82,7 +82,7 @@ df = pd.DataFrame(dados)
 # FILTROS
 # ============================================================
 
-st.subheader("🔎 Filtros")
+st.subheader(" Filtros")
 
 
 col1, col2, col3 = st.columns(3)
@@ -158,7 +158,7 @@ if avaliacao_selecionada != "Todas":
 
 st.divider()
 
-st.subheader("📈 Resumo")
+st.subheader(" Resumo")
 
 
 col1, col2, col3 = st.columns(3)
@@ -204,7 +204,7 @@ with col3:
 
 st.divider()
 
-st.subheader("📋 Lista de resultados")
+st.subheader(" Lista de resultados")
 
 
 if df_filtrado.empty:

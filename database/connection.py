@@ -19,11 +19,11 @@ def _configurar_env():
 def conectar():
     _configurar_env()
     conexao = psycopg2.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        database=os.getenv("DB_NAME", "sistema_correcao_provas"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", ""),
-        port=os.getenv("DB_PORT", "5432"),
+        host=os.getenv("DB_HOST", os.getenv("POSTGRES_HOST", "localhost")),
+        database=os.getenv("DB_NAME", os.getenv("POSTGRES_DB", "sistema_correcao_provas")),
+        user=os.getenv("DB_USER", os.getenv("POSTGRES_USER", "postgres")),
+        password=os.getenv("DB_PASSWORD", os.getenv("POSTGRES_PASSWORD", "")),
+        port=os.getenv("DB_PORT", os.getenv("POSTGRES_PORT", "5432")),
         client_encoding="LATIN1"
     )
 
